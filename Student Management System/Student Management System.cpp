@@ -8,5 +8,6 @@ int main()
     int test;
     int name;
     int hello;
+    int test1;
     std::cout << "Hello World!\n";
 }
