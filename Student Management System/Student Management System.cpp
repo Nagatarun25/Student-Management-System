@@ -7,5 +7,5 @@ int main()
     int testing;
     int again;
     string name;
-    std::cout << "Hello World!\n";
+    cout << "Hello World!\n";
 }
