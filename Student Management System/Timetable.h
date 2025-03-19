@@ -9,7 +9,7 @@ class TimeTable {
 
 	string studentID;
 	string subjects[6];
-
+	string pushTEST;
 
 
 
