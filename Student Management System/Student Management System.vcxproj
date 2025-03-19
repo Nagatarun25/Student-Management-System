@@ -127,7 +127,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Acceptance.cpp" />
+    <ClCompile Include="Admin.cpp" />
+    <ClCompile Include="AllergyInfo.cpp" />
+    <ClCompile Include="Course.cpp" />
+    <ClCompile Include="EnrollmentDate.cpp" />
+    <ClCompile Include="ExamSchedule.cpp" />
+    <ClCompile Include="Grade.cpp" />
+    <ClCompile Include="ParentGuardian.cpp" />
     <ClCompile Include="Student Management System.cpp" />
+    <ClCompile Include="Student.cpp" />
+    <ClCompile Include="Timetable.cpp" />
+    <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Acceptance.h" />
