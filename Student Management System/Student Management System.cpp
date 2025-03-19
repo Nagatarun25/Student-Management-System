@@ -7,6 +7,6 @@ int main()
     int testing;
     int test;
     int again;
-
-    std::cout << "Hello World!\n";
+    string name;
+    cout << "Hello World!\n";
 }
