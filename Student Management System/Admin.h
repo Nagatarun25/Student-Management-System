@@ -1,8 +1,9 @@
+
 #ifndef ADMIN_H
 #define ADMIN_H
 #include <string>
 using namespace std;
-class Admin
+class admin
 {
 private:
     string password;

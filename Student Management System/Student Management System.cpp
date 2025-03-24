@@ -1,6 +1,6 @@
 #include <iostream>
 #include "ExamSchedule.h"
-
+#include "Admin.h"
 using namespace std;
 
 void displayExamMenu() {
@@ -13,9 +13,10 @@ void displayExamMenu() {
 }
 
 int main() {
+    admin user;
     ExamSchedule examSchedule;
     int choice;
-
+    user.login();
     do {
         displayExamMenu();
         if (!(cin >> choice)) {

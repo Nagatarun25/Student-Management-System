@@ -1,13 +1,14 @@
+
 #include "Admin.h"
 #include <iostream>
 
 using namespace std;
 
-Admin::admin() {
+admin::admin() {
     password = "password123";
 }
 
-bool Admin::login()
+bool admin::login()
 {
     string inputUsername, inputPassword;
 
@@ -35,3 +36,5 @@ bool Admin::login()
         }
     }
 }
+
+
