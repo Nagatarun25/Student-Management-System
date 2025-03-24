@@ -1,2 +1,0 @@
-tetessetsetsetrs
-cout << test
