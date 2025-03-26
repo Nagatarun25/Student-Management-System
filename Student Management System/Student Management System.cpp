@@ -35,7 +35,7 @@ void displayExamScheduleMenu() {
     cout << "Enter your choice: ";
 }
 
-void handleStudentInfo(Student &student) {
+void handleStudentInfo(Student& student) {
     int studentChoice;
     do {
         displayStudentMenu();
@@ -46,20 +46,22 @@ void handleStudentInfo(Student &student) {
             continue;
         }
 
+        cin.ignore(); // Clear newline left in buffer
+
         switch (studentChoice) {
-            case 1: student.displayCurrentStudents(); break;
-            case 2: student.displayGraduatingStudents(); break;
-            case 3: student.displayTimetable(); break;
-            case 4: student.modifyStudents(); break;
-            case 5: student.displayAllergyInfo(); break;
-            case 6: student.displayParentInfo(); break;
-            case 7: cout << "Returning to main menu...\n"; break;
-            default: cout << "Invalid choice, try again.\n"; break;
+        case 1: student.displayCurrentStudents(); break;
+        /*case 2: student.displayGraduatingStudents(); break;
+        case 3: student.displayTimetable(); break;*/
+        case 4: student.modifyStudents(); break;
+        /*case 5: student.displayAllergyInfo(); break;
+        case 6: student.displayParentInfo(); break;*/
+        case 7: cout << "Returning to main menu...\n"; break;
+        default: cout << "Invalid choice, try again.\n"; break;
         }
     } while (studentChoice != 7);
 }
 
-void handleExamSchedule(ExamSchedule &examSchedule) {
+void handleExamSchedule(ExamSchedule& examSchedule) {
     int examChoice;
     do {
         displayExamScheduleMenu();
@@ -70,43 +72,45 @@ void handleExamSchedule(ExamSchedule &examSchedule) {
             continue;
         }
 
+        cin.ignore(); // Clear newline left in buffer
+
         switch (examChoice) {
-            case 1: {
-                string courseCode, date, time;
-                cout << "Enter Course Code: ";
-                cin >> ws; getline(cin, courseCode);
-                cout << "Enter Exam Date (YYYY-MM-DD): ";
-                cin >> ws; getline(cin, date);
-                cout << "Enter Exam Time (HH:MM): ";
-                cin >> ws; getline(cin, time);
+        case 1: {
+            string courseCode, date, time;
+            cout << "Enter Course Code: ";
+            getline(cin, courseCode);
+            cout << "Enter Exam Date (YYYY-MM-DD): ";
+            getline(cin, date);
+            cout << "Enter Exam Time (HH:MM): ";
+            getline(cin, time);
 
-                examSchedule.addExam(courseCode, date, time);
-                cout << "Exam added successfully!\n";
-                break;
-            }
-            case 2: {
-                string courseCode;
-                cout << "Enter Course Code to remove: ";
-                cin >> ws; getline(cin, courseCode);
+            examSchedule.addExam(courseCode, date, time);
+            cout << "Exam added successfully!\n";
+            break;
+        }
+        case 2: {
+            string courseCode;
+            cout << "Enter Course Code to remove: ";
+            getline(cin, courseCode);
 
-                examSchedule.removeExam(courseCode);
-                cout << "Exam removed if it existed.\n";
-                break;
-            }
-            case 3: {
-                string studentIDorName;
-                cout << "Enter Student ID or Name: ";
-                cin >> ws; getline(cin, studentIDorName);
+            examSchedule.removeExam(courseCode);
+            cout << "Exam removed if it existed.\n";
+            break;
+        }
+        case 3: {
+            string studentIDorName;
+            cout << "Enter Student ID or Name: ";
+            getline(cin, studentIDorName);
 
-                examSchedule.displayExamsForStudent(studentIDorName);
-                break;
-            }
-            case 4:
-                cout << "Returning to main menu...\n";
-                break;
-            default:
-                cout << "Invalid choice, try again.\n";
-                break;
+            examSchedule.displayExamsForStudent(studentIDorName);
+            break;
+        }
+        case 4:
+            cout << "Returning to main menu...\n";
+            break;
+        default:
+            cout << "Invalid choice, try again.\n";
+            break;
         }
     } while (examChoice != 4);
 }
@@ -128,12 +132,14 @@ int main() {
             continue;
         }
 
+        cin.ignore(); // Clear newline left in buffer
+
         switch (mainChoice) {
-            case 1: handleStudentInfo(student); break;
-            case 2: cout << "Course management is not yet implemented.\n"; break;
-            case 3: handleExamSchedule(examSchedule); break;
-            case 4: cout << "Exiting system...\n"; break;
-            default: cout << "Invalid choice, try again.\n"; break;
+        case 1: handleStudentInfo(student); break;
+        case 2: cout << "Course management is not yet implemented.\n"; break;
+        case 3: handleExamSchedule(examSchedule); break;
+        case 4: cout << "Exiting system...\n"; break;
+        default: cout << "Invalid choice, try again.\n"; break;
         }
     } while (mainChoice != 4);
 
