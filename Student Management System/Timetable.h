@@ -1,18 +1,24 @@
 #pragma once
 #include <iostream>
+#include <string>
+
 
 
 using namespace std;
 
 
-class TimeTable {
+class TimeTable  {
+	
+private:
 
 	string studentID;
 	string subjects[6];
-	string pushTEST;
+	string classTimes[6];
+	string instructors[6];
+	int classCount;
 
 
-
+public:
 
 
 
