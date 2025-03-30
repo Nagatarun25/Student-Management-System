@@ -1,0 +1,7 @@
+MATH101,Calculus I
+PHYS101,Physics I
+CHEM101,Chemistry I
+ENG101,English Composition
+HIST101,World History
+BIO101,Biology I
+CS101,Computer Science I

@@ -2,13 +2,14 @@
 #include "ExamSchedule.h"
 #include "Admin.h"
 #include "Student.h"
+#include "Course.h"
 #include "Acceptance.h"
 #include "AllergyInfo.h"
 #include "ParentGuardian.h"
 
 using namespace std;
 
-void displayMainMenu() {
+void displayMainMenu() {// display menu (after admin login)
     cout << "\n=== Student Management System ===\n";
     cout << "1. Student Info\n";
     cout << "2. Courses\n";
@@ -17,7 +18,7 @@ void displayMainMenu() {
     cout << "Enter your choice: ";
 }
 
-void displayStudentMenu() {
+void displayStudentMenu() { //student submenu
     cout << "\n--- Student Info ---\n";
     cout << "1. Display Current Students\n";
     cout << "2. Display Graduating Students\n";
@@ -28,7 +29,7 @@ void displayStudentMenu() {
     cout << "7. Go Back\n";
     cout << "Enter your choice: ";
 }
-
+//f
 void handleStudentInfo(Student& student, Acceptance& acceptance, AllergyInfo& allergyInfo, ParentGuardian& parentGuardian) {
     int studentChoice;
     do {
@@ -126,6 +127,7 @@ int main() {
     admin user;
     ExamSchedule examSchedule;
     Student student;
+    Course course;
     Acceptance acceptance;
     AllergyInfo allergyInfo;
     ParentGuardian parentGuardian;
@@ -146,7 +148,9 @@ int main() {
 
         switch (mainChoice) {
         case 1: handleStudentInfo(student, acceptance, allergyInfo, parentGuardian); break;
-        case 2: cout << "Course management is not yet implemented.\n"; break;
+        case 2: course.displayAvailableCourses();
+                course.displayCourseMenu();
+                break;
         case 3: handleExamSchedule(examSchedule); break;
         case 4: cout << "Exiting system...\n"; break;
         default: cout << "Invalid choice, try again.\n"; break;
