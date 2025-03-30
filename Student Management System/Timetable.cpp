@@ -48,13 +48,13 @@ void runTimetableMenu() {
 
     cout << "Welcome to the Timetable System\n";
 
-    // Get student info
+    //student info
     cout << "Enter student name: ";
     getline(cin, studentName);
     cout << "Enter student ID: ";
     getline(cin, studentID);
 
-    // Menu loop
+    //Menu
     do {
         cout << "\nMenu:\n";
         cout << "1. Add a class\n";
@@ -62,7 +62,7 @@ void runTimetableMenu() {
         cout << "3. Exit\n";
         cout << "Enter your choice (1-3): ";
         cin >> menuChoice;
-        cin.ignore(); // clean input buffer
+        cin.ignore(); // clean input
 
         switch (menuChoice) {
         case 1: {
@@ -95,8 +95,19 @@ void runTimetableMenu() {
 
 
 
+//main.cpp code
 
 
+//#include "Timetable.h"
+
+
+
+
+
+//int main() {
+  //  runTimetableMenu(); //
+   // return 0;
+//
 
 
 
