@@ -101,7 +101,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <SDLCheck>true</SDLCheck>
+      <SDLCheck>false</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
@@ -145,13 +145,11 @@
     <ClInclude Include="Admin.h" />
     <ClInclude Include="AllergyInfo.h" />
     <ClInclude Include="Course.h" />
-    <ClInclude Include="EnrollmentDate.h" />
     <ClInclude Include="ExamSchedule.h" />
     <ClInclude Include="Grade.h" />
     <ClInclude Include="ParentGuardian.h" />
     <ClInclude Include="Student.h" />
     <ClInclude Include="Timetable.h" />
-    <ClInclude Include="User.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
