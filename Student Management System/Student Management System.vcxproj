@@ -138,7 +138,6 @@
     <ClCompile Include="Student Management System.cpp" />
     <ClCompile Include="Student.cpp" />
     <ClCompile Include="Timetable.cpp" />
-    <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Acceptance.h" />
