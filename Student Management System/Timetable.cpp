@@ -44,17 +44,20 @@ void Timetable::displayTimetable() const {
 void runTimetableMenu() {
     Timetable myTimetable;
     string studentName, studentID;
+    const string filename = "timetable_data.txt";
+
+    if (myTimetable.loadFromFile(filename, studentName, studentID)) {
+        cout << "Previous timetable data loaded successfully!\n";
+    }
+    else {
+        cout << "Welcome to the Timetable System\n";
+        cout << "Enter student name: ";
+        getline(cin, studentName);
+        cout << "Enter student ID: ";
+        getline(cin, studentID);
+    }
+
     int menuChoice;
-
-    cout << "Welcome to the Timetable System\n";
-
-    //student info
-    cout << "Enter student name: ";
-    getline(cin, studentName);
-    cout << "Enter student ID: ";
-    getline(cin, studentID);
-
-    //Menu
     do {
         cout << "\nMenu:\n";
         cout << "1. Add a class\n";
@@ -62,7 +65,7 @@ void runTimetableMenu() {
         cout << "3. Exit\n";
         cout << "Enter your choice (1-3): ";
         cin >> menuChoice;
-        cin.ignore(); // clean input
+        cin.ignore();
 
         switch (menuChoice) {
         case 1: {
@@ -81,16 +84,53 @@ void runTimetableMenu() {
             break;
 
         case 3:
-            cout << "Exiting program. Goodbye!\n";
+            myTimetable.saveToFile(filename, studentName, studentID);
+            cout << "Data saved. Exiting program. Goodbye!\n";
             break;
 
         default:
-            cout << "Invalid choice. Please enter 1, 2, or 3.\n"; //Errr message
+            cout << "Invalid choice. Please enter 1, 2, or 3.\n";
         }
 
     } while (menuChoice != 3);
 }
 
+
+#include <fstream>
+
+void Timetable::saveToFile(const string& filename, const string& studentName, const string& studentID) const {
+    ofstream outFile(filename);
+    if (!outFile) {
+        cout << "Error opening file for writing.\n";
+        return;
+    }
+
+    outFile << studentName << '\n' << studentID << '\n' << classCount << '\n';
+    for (int i = 0; i < classCount; ++i) {
+        outFile << subjects[i] << '\n' << times[i] << '\n';
+    }
+    outFile.close();
+}
+
+bool Timetable::loadFromFile(const string& filename, string& studentName, string& studentID) {
+    ifstream inFile(filename);
+    if (!inFile) {
+        return false; // No file to load
+    }
+
+    getline(inFile, studentName);
+    getline(inFile, studentID);
+    inFile >> classCount;
+    inFile.ignore();
+
+    for (int i = 0; i < classCount; ++i) {
+        getline(inFile, subjects[i]);
+        getline(inFile, times[i]);
+    }
+
+    inFile.close();
+    return true;
+}
 
 
 
