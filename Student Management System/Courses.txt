@@ -1,7 +1,32 @@
-MATH101,Calculus I
-PHYS101,Physics I
-CHEM101,Chemistry I
-ENG101,English Composition
-HIST101,World History
-BIO101,Biology I
-CS101,Computer Science I
+ENG1,English 9
+ENG2,English 10
+ENG3,English 11
+ENG4,English 12
+CRW3,Creative Writing
+ALG1,Algebra 1
+GEO1,Geometry
+ALG2,Algebra 2
+CAL3,Pre-Calculus
+CAL2,AP Calculus
+GSC1,General Science
+GSC2,General Science 2
+BIO3,Biology
+BIO3,Biology 2
+CHE3,Chemistry
+CHE4,AP Chemistry
+PHY3,Physics
+PHY4,AP Physics
+HIS1,World History
+HIS2,Canadian History
+GAC2,Government and Civics
+ECO3,Economics
+SPA2,Spanish
+ART1,Art 1
+ART2,Art 2
+THE0,Theatre
+CMS2,Computer Science 1
+CMS3,Computer Science 2
+CME2,Computer Engineering 1
+CME4,Computer Engineering 2
+BAM3,Business and Marketing
+PYE0,Phys Ed

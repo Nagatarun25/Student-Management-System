@@ -1,5 +1,7 @@
 #include "Course.h"
 #include <iostream>
+#include <iomanip>
+#include <algorithm>
 Course::Course() {
     loadCoursesFromFile();
     loadEnrollmentsFromFile();
@@ -29,44 +31,53 @@ void Course::loadEnrollmentsFromFile() {
     studentCourses.clear();
     ifstream file(enrollmentFilename);
     if (!file) {
-        // File might not exist yet, that's okay
-        return;
+        return;  // File might not exist yet
     }
 
     string line;
     while (getline(file, line)) {
+        // Skip empty lines
+        if (line.empty()) continue;
+
         stringstream ss(line);
-        string studentID, courseCode;
-        getline(ss, studentID, ',');
+        string studentID;
         vector<string> courses;
+
+        // Read student ID (first part before comma)
+        if (!getline(ss, studentID, ',')) continue;
+
+        // Read all course codes
+        string courseCode;
         while (getline(ss, courseCode, ',')) {
             if (!courseCode.empty()) {
                 courses.push_back(courseCode);
             }
         }
-        studentCourses[studentID] = courses;
-    }
 
+        if (!courses.empty()) {
+            studentCourses[studentID] = courses;
+        }
+    }
     file.close();
 }
 
 void Course::saveEnrollmentsToFile() {
     ofstream file(enrollmentFilename);
     if (!file) {
-        cout << "Error opening file for writing: " << enrollmentFilename << endl;
+        cerr << "Error: Cannot save to " << enrollmentFilename << endl;
         return;
     }
 
     for (const auto& entry : studentCourses) {
-        file << entry.first; // Student ID
-        for (const auto& course : entry.second) {
-            file << "," << course;
+        file << entry.first;  // Student ID
+        for (const auto& courseCode : entry.second) {
+            file << "," << courseCode;
         }
-        file << endl;
+        file << "\n";
     }
-
     file.close();
 }
+
 
 void Course::displayAvailableCourses() {
     cout << "\n--- Available Courses ---\n";
