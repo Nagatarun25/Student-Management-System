@@ -1,11 +1,7 @@
 #ifndef PARENTGUARDIAN_H
 #define PARENTGUARDIAN_H
 
-#include <iostream>
-#include <fstream>
-#include <vector>
-#include <sstream>
-#include <map>
+#include <string>
 
 class ParentGuardian {
 public:

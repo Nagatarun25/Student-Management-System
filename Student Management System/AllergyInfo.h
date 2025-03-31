@@ -1,11 +1,7 @@
 #ifndef ALLERGYINFO_H
 #define ALLERGYINFO_H
 
-#include <iostream>
-#include <fstream>
-#include <vector>
-#include <sstream>
-#include <map>
+#include <string>
 
 class AllergyInfo {
 public:
