@@ -24,7 +24,7 @@ private:
     vector<CourseInfo> availableCourses;
     unordered_map<string, vector<string>> studentCourses; // Student ID -> List of course codes
     const string coursesFilename = "Courses.txt";
-    const string enrollmentFilename = "Enrollments.txt";
+    const string enrollmentFilename = "EnrolledCourses.txt";
 
     void loadCoursesFromFile();
     void loadEnrollmentsFromFile();
