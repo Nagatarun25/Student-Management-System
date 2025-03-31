@@ -89,7 +89,7 @@ void runTimetableMenu() {
             break;
 
         default:
-            cout << "Invalid choice. Please enter 1, 2, or 3.\n";
+            cout << "Invalid choice. Please enter 1, 2, or 3.\n"; //Errr message
         }
 
     } while (menuChoice != 3);

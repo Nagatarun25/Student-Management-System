@@ -6,6 +6,7 @@
 #include "Acceptance.h"
 #include "AllergyInfo.h"
 #include "ParentGuardian.h"
+#include "Timetable.h"
 
 using namespace std;
 
@@ -29,6 +30,56 @@ void displayStudentMenu() { //student submenu
     cout << "7. Go Back\n";
     cout << "Enter your choice: ";
 }
+
+void runTimetableMenu() {
+    Timetable myTimetable;
+    string studentName, studentID;
+    int menuChoice;
+
+    cout << "Welcome to the Timetable System\n";
+
+    //student info
+    cout << "Enter student name: ";
+    getline(cin, studentName);
+    cout << "Enter student ID: ";
+    getline(cin, studentID);
+
+    //Menu
+    do {
+        cout << "\nMenu:\n";
+        cout << "1. Add a class\n";
+        cout << "2. Show timetable\n";
+        cout << "3. Exit\n";
+        cout << "Enter your choice (1-3): ";
+        cin >> menuChoice;
+        cin.ignore(); // clean input
+
+        switch (menuChoice) {
+        case 1: {
+            string subject, time;
+            cout << "Enter subject name: ";
+            getline(cin, subject);
+            cout << "Enter time (e.g., Mon 9AM): ";
+            getline(cin, time);
+            myTimetable.add_class(subject, time);
+            break;
+        }
+
+        case 2:
+            cout << "\nStudent: " << studentName << " | ID: " << studentID << endl;
+            myTimetable.displayTimetable();
+            break;
+
+        case 3:
+            cout << "Exiting program. Goodbye!\n";
+            break;
+
+        default:
+            cout << "Invalid choice. Please enter 1, 2, or 3.\n"; //Errr message
+        }
+
+    } while (menuChoice != 3);
+}
 //f
 void handleStudentInfo(Student& student, Acceptance& acceptance, AllergyInfo& allergyInfo, ParentGuardian& parentGuardian) {
     int studentChoice;
@@ -46,6 +97,7 @@ void handleStudentInfo(Student& student, Acceptance& acceptance, AllergyInfo& al
         switch (studentChoice) {
         case 1: student.displayCurrentStudents(); break;
         case 2: acceptance.displayGraduatingStudents(); break;
+        case 3: runTimetableMenu(); break;
         case 4: student.modifyStudents(); break;
         case 5:
             int allergyChoice;
