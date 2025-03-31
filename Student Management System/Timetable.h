@@ -23,7 +23,8 @@ public:
 	//mutators
 
 	void add_class(string subject, string time);
-
+	void saveToFile(const string& filename, const string& studentName, const string& studentID) const;
+	bool loadFromFile(const string& filename, string& studentName, string& studentID);
 
 	void displayTimetable() const; //virutal function
 
