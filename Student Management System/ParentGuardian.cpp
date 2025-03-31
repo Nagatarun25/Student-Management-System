@@ -1,59 +1,70 @@
 #include "ParentGuardian.h"
 #include <iostream>
-#include <fstream>
 
-void ParentGuardian::displayParentInfo() {
-    std::ifstream file("parentguardian.txt");
-    if (!file) {
-        std::cout << "No parent/guardian information available.\n";
-        return;
-    }
+using namespace std;
 
-    std::string line;
-    std::cout << "\n--- Parent/Guardian Information ---\n";
-    while (getline(file, line)) {
-        std::cout << line << "\n";
-    }
-
-    file.close();
+ParentGuardian::ParentGuardian() {
+    count = 0;
 }
 
-void ParentGuardian::addParentInfo() {
-    std::ifstream studentFile("student.txt");
-    if (!studentFile) {
-        std::cout << "Error: Unable to open student.txt\n";
-        return;
+void ParentGuardian::addParent(const string& name, const string& contact) {
+    if (count < 5) {
+        parentNames[count] = name;
+        contactInfo[count] = contact;
+        count++;
+        cout << "Parent/Guardian added successfully.\n";
     }
+    else {
+        cout << "Maximum number of entries reached (5).\n";
+    }
+}
 
-    std::map<std::string, std::string> studentMap;
-    std::string line;
-    while (getline(studentFile, line)) {
-        std::istringstream iss(line);
-        std::string id, name, grade;
-        if (getline(iss, id, ',') && getline(iss, name, ',') && getline(iss, grade)) {
-            studentMap[id] = name;
+void ParentGuardian::showParents() const {
+    if (count == 0) {
+        cout << "No parent/guardian information available.\n";
+    }
+    else {
+        cout << "\nParent/Guardian Information:\n";
+        for (int i = 0; i < count; i++) {
+            cout << i + 1 << ". " << parentNames[i] << " | Contact: " << contactInfo[i] << endl;
         }
     }
-    studentFile.close();
+}
 
-    std::string studentID, parentName, contact;
-    std::cout << "Enter Student ID: ";
-    std::cin >> studentID;
-    std::cin.ignore();
+void runParentGuardianMenu() {
+    ParentGuardian pg;
+    int choice;
+    string name, contact;
 
-    if (studentMap.find(studentID) == studentMap.end()) {
-        std::cout << "Student ID not found!\n";
-        return;
-    }
+    do {
+        cout << "\n=== Parent/Guardian Menu ===\n";
+        cout << "1. Add parent/guardian info\n";
+        cout << "2. Show parent/guardian info\n";
+        cout << "3. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+        cin.ignore(); // clear newline
 
-    std::cout << "Enter Parent/Guardian Name: ";
-    getline(std::cin, parentName);
-    std::cout << "Enter Contact Info: ";
-    getline(std::cin, contact);
+        switch (choice) {
+        case 1:
+            cout << "Enter parent/guardian name: ";
+            getline(cin, name);
+            cout << "Enter contact info: ";
+            getline(cin, contact);
+            pg.addParent(name, contact);
+            break;
 
-    std::ofstream parentFile("parentguardian.txt", std::ios::app);
-    parentFile << studentID << ", " << studentMap[studentID] << ", Parent name: " << parentName << ", " << contact << "\n";
-    parentFile.close();
+        case 2:
+            pg.showParents();
+            break;
 
-    std::cout << "Parent/Guardian information updated successfully!\n";
+        case 3:
+            cout << "Exiting parent/guardian menu.\n";
+            break;
+
+        default:
+            cout << "Invalid option. Try again.\n";
+        }
+
+    } while (choice != 3);
 }
