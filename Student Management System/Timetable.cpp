@@ -41,55 +41,7 @@ void Timetable::displayTimetable() const {
     cout << "+----------------------+----------------------+\n";
 }
 
-void runTimetableMenu() {
-    Timetable myTimetable;
-    string studentName, studentID;
-    int menuChoice;
 
-    cout << "Welcome to the Timetable System\n";
-
-    //student info
-    cout << "Enter student name: ";
-    getline(cin, studentName);
-    cout << "Enter student ID: ";
-    getline(cin, studentID);
-
-    //Menu
-    do {
-        cout << "\nMenu:\n";
-        cout << "1. Add a class\n";
-        cout << "2. Show timetable\n";
-        cout << "3. Exit\n";
-        cout << "Enter your choice (1-3): ";
-        cin >> menuChoice;
-        cin.ignore(); // clean input
-
-        switch (menuChoice) {
-        case 1: {
-            string subject, time;
-            cout << "Enter subject name: ";
-            getline(cin, subject);
-            cout << "Enter time (e.g., Mon 9AM): ";
-            getline(cin, time);
-            myTimetable.add_class(subject, time);
-            break;
-        }
-
-        case 2:
-            cout << "\nStudent: " << studentName << " | ID: " << studentID << endl;
-            myTimetable.displayTimetable();
-            break;
-
-        case 3:
-            cout << "Exiting program. Goodbye!\n";
-            break;
-
-        default:
-            cout << "Invalid choice. Please enter 1, 2, or 3.\n"; //Errr message
-        }
-
-    } while (menuChoice != 3);
-}
 
 
 
