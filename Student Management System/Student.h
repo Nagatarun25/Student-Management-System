@@ -17,7 +17,7 @@ private:
         int grade;
     };
     vector<StudentInfo> students;
-    const string filename = "Student.txt";
+    const string filename = "Students.txt";
 
 public:
     Student();

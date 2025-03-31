@@ -194,7 +194,6 @@ void Course::displayCourseEnrollmentCount() {
 void Course::displayCourseMenu() {
     int choice;
     string studentID;
-
     cout << "Enter Student ID: ";
     cin >> studentID;
     cin.ignore();
@@ -204,7 +203,8 @@ void Course::displayCourseMenu() {
         cout << "1. Add/Remove Courses\n";
         cout << "2. Display Student's Courses\n";
         cout << "3. Display Course Enrollment Counts\n";
-        cout << "4. Go Back\n";
+        cout << "4. Access Grades Menu\n";
+        cout << "5. Go Back\n";
         cout << "Enter your choice: ";
 
         if (!(cin >> choice)) {
@@ -220,8 +220,14 @@ void Course::displayCourseMenu() {
         case 1: manageStudentCourses(studentID); break;
         case 2: displayStudentCourses(studentID); break;
         case 3: displayCourseEnrollmentCount(); break;
-        case 4: cout << "Returning to main menu...\n"; break;
+        case 4:
+        {
+            Grade grades(studentID); // Pass studentID to Grade constructor
+            grades.displayGradesMenu(); // Call displayGradesMenu without arguments
+            break;
+        }
+        case 5: cout << "Returning to main menu...\n"; break;
         default: cout << "Invalid choice, try again.\n"; break;
         }
-    } while (choice != 4);
+    } while (choice != 5); // Exit when 'Go Back' is selected
 }

@@ -9,7 +9,7 @@
 #include <sstream>
 #include <unordered_map>
 #include <algorithm>
-
+#include "Grade.h"
 using namespace std;
 
 class Course
