@@ -1,34 +1,29 @@
 #pragma once
 #include <iostream>
+#include <fstream>
+#include <vector>
 #include <string>
+#include <iomanip>
+#include <sstream>
 
 using namespace std;
 
 class Timetable {
-
 private:
-
-	string subjects[6];
-	string times[6];
-	int classCount;
-
-
-
+    string studentID;
+    vector<string> subjects;
+    vector<string> times;
+    vector<string> roomNumbers;
 
 public:
+    Timetable();
 
-	Timetable(); //default contructor
+    bool loadTimetable(const string& filename, const string& studentID);
+    void saveTimetable(const string& filename) const;
 
-
-	//mutators
-
-	void add_class(string subject, string time);
-	void saveToFile(const string& filename, const string& studentName, const string& studentID) const;
-	bool loadFromFile(const string& filename, string& studentName, string& studentID);
-
-	void displayTimetable() const; //virutal function
-
-
+    void addCourse(const string& course, const string& time, const string& room);
+    bool removeCourse(const string& course);
+    void displayTimetable() const;
 };
 
-void runTimetableMenu(); //not apart of object, helper fxn therefore declared outside class
+void runTimetableMenu();

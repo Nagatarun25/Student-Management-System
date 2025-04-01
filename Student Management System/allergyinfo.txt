@@ -1,1 +1,15 @@
-1013, Tarun Moturi, Peanut Allergy
+1001,Peanuts
+1002,Dairy
+1002,Shellfish
+1003,None
+1004,Eggs
+1005,Shellfish
+1006,None
+1007,Tree Nuts
+1008,Peanuts
+1009,None
+1010,Gluten
+1011,None
+1012,Strawberries
+1012,Tree Nuts
+1013,peanut

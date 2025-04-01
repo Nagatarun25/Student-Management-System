@@ -1,155 +1,153 @@
 #include "Timetable.h"
-#include <iomanip>
 
+Timetable::Timetable() {}
 
-
-Timetable::Timetable() {
-
-    classCount = 0;
-}
-
-
-void Timetable::add_class(string subject, string time) {
-
-    if (classCount < 6) {
-
-        subjects[classCount] = subject;
-        times[classCount] = time;
-        classCount++;
-
-
-    }
-    else {
-        cout << "Timetable is full! Cannot add more classes. " << endl;
+bool Timetable::loadTimetable(const string& filename, const string& studentID) {
+    this->studentID = studentID;
+    ifstream inFile(filename);
+    if (!inFile) {
+        return false;
     }
 
-}
+    string line;
+    subjects.clear();
+    times.clear();
+    roomNumbers.clear();
 
+    while (getline(inFile, line)) {
+        stringstream ss(line);
+        string id, subject, time, room;
+        getline(ss, id, ',');
 
-void Timetable::displayTimetable() const {
-
-    cout << "\n+----------------------+----------------------+\n";
-    cout << "| " << setw(20) << left << "Subject"
-        << "| " << setw(20) << left << "Time" << "|\n";
-    cout << "+----------------------+----------------------+\n";
-
-    for (int i = 0; i < classCount; i++) {
-        cout << "| " << setw(20) << left << subjects[i]
-            << "| " << setw(20) << left << times[i] << "|\n";
-    }
-
-    cout << "+----------------------+----------------------+\n";
-}
-
-void runTimetableMenu() {
-    Timetable myTimetable;
-    string studentName, studentID;
-    const string filename = "timetable_data.txt";
-
-    if (myTimetable.loadFromFile(filename, studentName, studentID)) {
-        //cout << "Previous timetable data loaded successfully!\n";
-    
-        cout << "Welcome to the Timetable System\n";
-        cout << "Enter student name: ";
-        getline(cin, studentName);
-        cout << "Enter student ID: ";
-        getline(cin, studentID);
-    }
-
-    int menuChoice;
-    do {
-        cout << "\nMenu:\n";
-        cout << "1. Add a class\n";
-        cout << "2. Show timetable\n";
-        cout << "3. Exit\n";
-        cout << "Enter your choice (1-3): ";
-        cin >> menuChoice;
-        cin.ignore();
-
-        switch (menuChoice) {
-        case 1: {
-            string subject, time;
-            cout << "Enter subject name: ";
-            getline(cin, subject);
-            cout << "Enter time (e.g., Mon 9AM): ";
-            getline(cin, time);
-            myTimetable.add_class(subject, time);
-
-            // Save right after adding Fix
-            myTimetable.saveToFile(filename, studentName, studentID);
-
-            break;
+        if (id == studentID) {
+            while (getline(ss, subject, ',') &&
+                getline(ss, time, ',') &&
+                getline(ss, room, ',')) {
+                subjects.push_back(subject);
+                times.push_back(time);
+                roomNumbers.push_back(room);
+            }
+            inFile.close();
+            return true;
         }
-
-        case 2:
-            cout << "\nStudent: " << studentName << " | ID: " << studentID << endl;
-            myTimetable.displayTimetable();
-            break;
-
-        case 3:
-            myTimetable.saveToFile(filename, studentName, studentID);
-            cout << "Data saved. Exiting program. Goodbye!\n";
-            break;
-
-        default:
-            cout << "Invalid choice. Please enter 1, 2, or 3.\n"; //Errr message
-        }
-
-    } while (menuChoice != 3);
+    }
+    inFile.close();
+    return false;
 }
 
+void Timetable::saveTimetable(const string& filename) const {
+    ifstream inFile(filename);
+    vector<string> fileLines;
+    string line;
 
-#include <fstream>
+    while (getline(inFile, line)) {
+        if (line.find(studentID + ",") != 0) {
+            fileLines.push_back(line);
+        }
+    }
+    inFile.close();
 
-void Timetable::saveToFile(const string& filename, const string& studentName, const string& studentID) const {
     ofstream outFile(filename);
-    if (!outFile) {
-        cout << "Error opening file for writing.\n";
-        return;
+    for (const string& line : fileLines) {
+        outFile << line << "\n";
     }
 
-    outFile << studentName << '\n' << studentID << '\n' << classCount << '\n';
-    for (int i = 0; i < classCount; ++i) {
-        outFile << subjects[i] << '\n' << times[i] << '\n';
+    outFile << studentID;
+    for (size_t i = 0; i < subjects.size(); ++i) {
+        outFile << "," << subjects[i] << "," << times[i] << "," << roomNumbers[i];
     }
+    outFile << "\n";
     outFile.close();
 }
 
-bool Timetable::loadFromFile(const string& filename, string& studentName, string& studentID) {
-    ifstream inFile(filename);
-    if (!inFile) {
-        return false; // No file to load
+void Timetable::addCourse(const string& course, const string& time, const string& room) {
+    subjects.push_back(course);
+    times.push_back(time);
+    roomNumbers.push_back(room);
+}
+
+bool Timetable::removeCourse(const string& course) {
+    for (size_t i = 0; i < subjects.size(); ++i) {
+        if (subjects[i] == course) {
+            subjects.erase(subjects.begin() + i);
+            times.erase(times.begin() + i);
+            roomNumbers.erase(roomNumbers.begin() + i);
+            return true;
+        }
+    }
+    return false;
+}
+
+void Timetable::displayTimetable() const {
+    cout << "+-----------------------------------------------------+\n";
+    cout << "| Student ID: " << studentID << "                                      |\n";
+    cout << "+------------+---------------------+-----------------+\n";
+    cout << "| Course     | Time                | Room           |\n";
+    cout << "+------------+---------------------+-----------------+\n";
+
+    for (size_t i = 0; i < subjects.size(); i++) {
+        cout << "| " << setw(10) << left << subjects[i] << " | "
+            << setw(21) << left << times[i] << " | "
+            << setw(15) << left << roomNumbers[i] << " |\n";
     }
 
-    getline(inFile, studentName);
-    getline(inFile, studentID);
-    inFile >> classCount;
-    inFile.ignore();
-
-    for (int i = 0; i < classCount; ++i) {
-        getline(inFile, subjects[i]);
-        getline(inFile, times[i]);
-    }
-
-    inFile.close();
-    return true;
+    cout << "+------------+---------------------+-----------------+\n";
 }
 
 
+void runTimetableMenu() {
+    string studentID;
+    cout << "Enter student ID: ";
+    cin >> studentID;
+    cin.ignore();
 
+    Timetable myTimetable;
+    myTimetable.loadTimetable("timetable_data.txt", studentID);
 
-//main.cpp code
+    int choice;
+    do {
+        cout << "\nMenu:\n";
+        cout << "1. Add Course\n";
+        cout << "2. Remove Course\n";
+        cout << "3. Display Timetable\n";
+        cout << "4. Save & Exit\n";
+        cout << "Enter choice: ";
+        cin >> choice;
+        cin.ignore();
 
-//#include "Timetable.h"
-
-//int main() {
-  //  runTimetableMenu(); //
-   // return 0;
-//
-
-
-
-
-
-
-
+        switch (choice) {
+        case 1: {
+            string course, time, room;
+            cout << "Enter course code: ";
+            getline(cin, course);
+            cout << "Enter time (e.g., 9:00 AM - 10:00 AM): ";
+            getline(cin, time);
+            cout << "Enter room number: ";
+            getline(cin, room);
+            myTimetable.addCourse(course, time, room);
+            break;
+        }
+        case 2: {
+            string course;
+            cout << "Enter course code to remove: ";
+            getline(cin, course);
+            if (myTimetable.removeCourse(course)) {
+                cout << "Course removed successfully.\n";
+            }
+            else {
+                cout << "Course not found!\n";
+            }
+            break;
+        }
+        case 3:
+            myTimetable.displayTimetable();
+            break;
+        case 4:
+            myTimetable.saveTimetable("timetable_data.txt");
+            cout << "Timetable saved. Exiting...\n";
+            break;
+        default:
+            cout << "Invalid choice. Try again.\n";
+        }
+    } while (choice != 4);
+}

@@ -3,7 +3,7 @@
 #include <fstream>
 
 void Acceptance::displayGraduatingStudents() {
-    std::ifstream file("student.txt");
+    std::ifstream file("Students.txt");
     if (!file) {
         std::cout << "Error: Unable to open student.txt\n";
         return;

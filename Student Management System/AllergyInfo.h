@@ -1,33 +1,22 @@
 #ifndef ALLERGYINFO_H
 #define ALLERGYINFO_H
 
+#include <iostream>
+#include <fstream>
 #include <string>
 
 class AllergyInfo {
-private:
-    std::string allergyList[5];
-    int totalAllergies;
-
 public:
-    AllergyInfo(); // constructor
+    AllergyInfo();
+    void addAllergy(const std::string& studentID, const std::string& allergy);
+    void displayAllergies() const;
+    void displayStudentAllergy(const std::string& studentID) const;
+    void handleAllergyInfo(); // Function to manage allergy menu
+    void removeAllergy(const std::string& studentID, const std::string& allergy);
 
-    void addAllergy(const std::string& allergy);
-    void showAllergies() const;
+private:
+    const std::string filename = "allergyinfo.txt";
 };
 
-// Menu function for user interaction
-void runAllergyMenu();
+#endif
 
-#endif // ALLERGYINFO_H
-
-
-
-
-//main testing
-
-// #include "AllergyInfo.h"
-
-// int main() {
-//    runAllergyMenu();
-//   return 0;
-//}

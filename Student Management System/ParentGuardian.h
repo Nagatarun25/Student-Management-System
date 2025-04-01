@@ -1,33 +1,32 @@
 #ifndef PARENTGUARDIAN_H
 #define PARENTGUARDIAN_H
 
+#include <iostream>
+#include <fstream>
+#include <vector>
 #include <string>
+using namespace std;
 
 class ParentGuardian {
 private:
-    std::string parentNames[5];
-    std::string contactInfo[5];
-    int count;
+    struct ParentInfo {
+        int studentID;
+        string parentName;
+        string relationship;
+        string contactNumber;
+    };
+    vector<ParentInfo> parents;
+    string filename = "parentguardian.txt";
+
+    void loadFromFile();
+    void saveToFile();
 
 public:
-    ParentGuardian(); // constructor
-
-    void addParent(const std::string& name, const std::string& contact);
-    void showParents() const;
+    ParentGuardian();
+    void addParent();
+    void removeParent();
+    void displayParents();
+    void displayStudentInfo();
 };
 
-// Menu function for user interaction
-void runParentGuardianMenu();
-
-#endif // PARENTGUARDIAN_H
-
-
-
-
-// MAIN CODE 
-// #include "ParentGuardian.h"
-
-// int main() {
-  //  runParentGuardianMenu();
-  //  return 0;
-// }
+#endif

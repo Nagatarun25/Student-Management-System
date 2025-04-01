@@ -1,2 +1,53 @@
-ENG1 2025-11-12 12:00
-1MT3 2025-01-25 12:00
+1001, Student 1001, English 9, 2025-06-01, 10:00 AM
+1001, Student 1001, Algebra 1, 2025-06-01, 2:00 PM
+1001, Student 1001, General Science, 2025-06-02, 10:00 AM
+1001, Student 1001, Art 1, 2025-06-02, 2:00 PM
+1002, Student 1002, English 9, 2025-06-01, 10:00 AM
+1002, Student 1002, Algebra 1, 2025-06-01, 2:00 PM
+1002, Student 1002, Geometry, 2025-06-02, 10:00 AM
+1002, Student 1002, World History, 2025-06-02, 2:00 PM
+1003, Student 1003, English 9, 2025-06-01, 10:00 AM
+1003, Student 1003, Algebra 1, 2025-06-01, 2:00 PM
+1003, Student 1003, General Science, 2025-06-02, 10:00 AM
+1003, Student 1003, World History, 2025-06-02, 2:00 PM
+1004, Student 1004, English 10, 2025-06-01, 10:00 AM
+1004, Student 1004, Algebra 2, 2025-06-01, 2:00 PM
+1004, Student 1004, General Science 2, 2025-06-02, 10:00 AM
+1004, Student 1004, Computer Science 1, 2025-06-02, 2:00 PM
+1005, Student 1005, English 10, 2025-06-01, 10:00 AM
+1005, Student 1005, Algebra 2, 2025-06-01, 2:00 PM
+1005, Student 1005, Computer Engineering 1, 2025-06-02, 10:00 AM
+1005, Student 1005, Computer Science 1, 2025-06-02, 2:00 PM
+1006, Student 1006, English 10, 2025-06-01, 10:00 AM
+1006, Student 1006, Algebra 2, 2025-06-01, 2:00 PM
+1006, Student 1006, Canadian History, 2025-06-02, 10:00 AM
+1006, Student 1006, Art 2, 2025-06-02, 2:00 PM
+1007, Student 1007, English 11, 2025-06-01, 10:00 AM
+1007, Student 1007, Pre-Calculus, 2025-06-01, 2:00 PM
+1007, Student 1007, Computer Science 2, 2025-06-02, 10:00 AM
+1007, Student 1007, Chemistry, 2025-06-02, 2:00 PM
+1008, Student 1008, English 11, 2025-06-01, 10:00 AM
+1008, Student 1008, Pre-Calculus, 2025-06-01, 2:00 PM
+1008, Student 1008, Computer Science 2, 2025-06-02, 10:00 AM
+1008, Student 1008, Physics, 2025-06-02, 2:00 PM
+1009, Student 1009, English 11, 2025-06-01, 10:00 AM
+1009, Student 1009, Pre-Calculus, 2025-06-01, 2:00 PM
+1009, Student 1009, Chemistry, 2025-06-02, 10:00 AM
+1009, Student 1009, Biology, 2025-06-02, 2:00 PM
+1010, Student 1010, English 12, 2025-06-01, 10:00 AM
+1010, Student 1010, Biology, 2025-06-01, 2:00 PM
+1010, Student 1010, AP Chemistry, 2025-06-02, 10:00 AM
+1010, Student 1010, Computer Engineering 2, 2025-06-02, 2:00 PM
+1011, Student 1011, English 12, 2025-06-01, 10:00 AM
+1011, Student 1011, Biology, 2025-06-01, 2:00 PM
+1011, Student 1011, Computer Engineering 2, 2025-06-02, 10:00 AM
+1011, Student 1011, Computer Engineering 2, 2025-06-02, 2:00 PM
+1012, Student 1012, English 12, 2025-06-01, 10:00 AM
+1012, Student 1012, AP Calculus, 2025-06-01, 2:00 PM
+1012, Student 1012, Computer Engineering 2, 2025-06-02, 10:00 AM
+1012, Student 1012, Phys Ed, 2025-06-02, 2:00 PM
+1013, Student 1013, English 12, 2025-06-01, 10:00 AM
+1013, Student 1013, AP Calculus, 2025-06-01, 2:00 PM
+1013, Student 1013, AP Chemistry, 2025-06-02, 10:00 AM
+1013, Student 1013, Computer Engineering 2, 2025-06-02, 2:00 PM
+1013,Tarun,MATH101,2025-06-02 3:00 PM,3:00 PM
