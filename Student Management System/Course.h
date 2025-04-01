@@ -29,6 +29,8 @@ private:
     void loadCoursesFromFile();
     void loadEnrollmentsFromFile();
     void saveEnrollmentsToFile();
+    bool isCourseAllowedForStudent(const string& studentID, const string& courseCode);
+
 
 public:
     Course();
