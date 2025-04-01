@@ -32,6 +32,8 @@ void displayStudentMenu() { //student submenu
 }
 
 void runTimetableMenu();
+void runParentGuardianMenu();
+
 
 
 //f
@@ -62,15 +64,7 @@ void handleStudentInfo(Student& student, Acceptance& acceptance, AllergyInfo& al
             //else if (allergyChoice == 2) allergyInfo.addAllergy();
             //else cout << "Invalid choice.\n";
             break;
-        case 6:
-            int parentChoice;
-            cout << "\n1. Display Parent/Guardian Info\n2. Add Parent/Guardian Info\nEnter choice: ";
-            cin >> parentChoice;
-            cin.ignore();
-            //if (parentChoice == 1) parentGuardian.displayParentInfo();
-            //else if (parentChoice == 2) parentGuardian.addParentInfo();
-            //else cout << "Invalid choice.\n";
-            break;
+        case 6:runParentGuardianMenu(); break;
         case 7: cout << "Returning to main menu...\n"; break;
         default: cout << "Invalid choice, try again.\n"; break;
         }

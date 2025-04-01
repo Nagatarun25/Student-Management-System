@@ -47,9 +47,8 @@ void runTimetableMenu() {
     const string filename = "timetable_data.txt";
 
     if (myTimetable.loadFromFile(filename, studentName, studentID)) {
-        cout << "Previous timetable data loaded successfully!\n";
-    }
-    else {
+        //cout << "Previous timetable data loaded successfully!\n";
+    
         cout << "Welcome to the Timetable System\n";
         cout << "Enter student name: ";
         getline(cin, studentName);
