@@ -2,6 +2,7 @@
 #include <iostream>
 #include <iomanip>
 #include <algorithm>
+#include <vector>
 Course::Course() {
     loadCoursesFromFile();
     loadEnrollmentsFromFile();
@@ -237,6 +238,7 @@ void Course::displayCourseEnrollmentCount() {
 void Course::displayCourseMenu() {
     int choice;
     string studentID;
+    vector<string> enrolled;
     cout << "Enter Student ID: ";
     cin >> studentID;
     cin.ignore();
@@ -265,7 +267,11 @@ void Course::displayCourseMenu() {
         case 3: displayCourseEnrollmentCount(); break;
         case 4:
         {
-            Grade grades(studentID); // Pass studentID to Grade constructor
+            vector<string> enrolled;
+            if (studentCourses.find(studentID) != studentCourses.end()) {
+                enrolled = studentCourses[studentID];
+            }
+            Grade grades(studentID, enrolled); // Pass studentID to Grade constructor
             grades.displayGradesMenu(); // Call displayGradesMenu without arguments
             break;
         }
