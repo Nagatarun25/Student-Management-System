@@ -74,6 +74,10 @@ void runTimetableMenu() {
             cout << "Enter time (e.g., Mon 9AM): ";
             getline(cin, time);
             myTimetable.add_class(subject, time);
+
+            // Save right after adding Fix
+            myTimetable.saveToFile(filename, studentName, studentID);
+
             break;
         }
 

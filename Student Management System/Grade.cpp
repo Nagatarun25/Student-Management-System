@@ -1,10 +1,13 @@
 #include "Grade.h"
 
-Grade::Grade(const string& id) : studentID(id) {
+Grade::Grade(const string& id, const vector<string>& courses)
+    : studentID(id), enrolledCourses(courses) {
     filename = "Grad_" + studentID + ".txt";
     loadGrades();
 }
-
+bool Grade::isEnrolled(const string& courseCode) {
+    return find(enrolledCourses.begin(), enrolledCourses.end(), courseCode) != enrolledCourses.end();
+}
 void Grade::loadGrades() {
     studentGrades.clear();
     ifstream file(filename);
@@ -13,7 +16,10 @@ void Grade::loadGrades() {
     string courseCode;
     int grade;
     while (file >> courseCode >> grade) {
-        studentGrades[courseCode] = grade;
+        // Only load grades for enrolled courses
+        if (isEnrolled(courseCode)) {
+            studentGrades[courseCode] = grade;
+        }
     }
     file.close();
 }
@@ -82,10 +88,23 @@ void Grade::displayGradesMenu() {
 void Grade::modifyGrades() {
     string courseCode;
     int grade;
+
     cout << "Enter Course Code: ";
     cin >> courseCode;
-    cout << "Enter Grade: ";
-    cin >> grade;
+
+    if (!isEnrolled(courseCode)) {
+        cout << "Error: Student is not enrolled in this course.\n";
+        return;
+    }
+
+    cout << "Enter Grade (0-100): ";
+    if (!(cin >> grade) || grade < 0 || grade > 100) {
+        cout << "Invalid grade. Please enter a value between 0-100.\n";
+        cin.clear();
+        cin.ignore(10000, '\n');
+        return;
+    }
+
     studentGrades[courseCode] = grade;
     saveGrades();
     cout << "Grade updated!\n";
@@ -95,11 +114,17 @@ void Grade::removeGrade() {
     string courseCode;
     cout << "Enter Course Code to remove: ";
     cin >> courseCode;
+
+    if (!isEnrolled(courseCode)) {
+        cout << "Error: Student is not enrolled in this course.\n";
+        return;
+    }
+
     if (studentGrades.erase(courseCode)) {
         saveGrades();
         cout << "Grade removed!\n";
     }
     else {
-        cout << "Course not found.\n";
+        cout << "No grade found for this course.\n";
     }
 }

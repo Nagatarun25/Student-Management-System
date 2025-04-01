@@ -24,11 +24,13 @@ private:
     vector<CourseInfo> availableCourses;
     unordered_map<string, vector<string>> studentCourses; // Student ID -> List of course codes
     const string coursesFilename = "Courses.txt";
-    const string enrollmentFilename = "Enrollments.txt";
+    const string enrollmentFilename = "EnrolledCourses.txt";
 
     void loadCoursesFromFile();
     void loadEnrollmentsFromFile();
     void saveEnrollmentsToFile();
+    bool isCourseAllowedForStudent(const string& studentID, const string& courseCode);
+
 
 public:
     Course();

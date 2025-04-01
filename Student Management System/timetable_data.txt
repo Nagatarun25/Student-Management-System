@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 tarun
 1013
 2
@@ -5,3 +6,14 @@ Science
 Tues 8AM
 math
 Mon 9AM
+=======
+Kareem Aldulaimi
+400588941
+3
+Science
+Tues 8AM
+Physics
+Friday 2PM
+TEST
+1AM
+>>>>>>> ed76e9bd0c3c0f49492c762af2bc2f398d99a620
