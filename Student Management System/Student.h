@@ -24,11 +24,8 @@ public:
     void loadStudentsFromFile();
     void saveStudentsToFile();
     void displayCurrentStudents();
-  /*  void displayGraduatingStudents();
-    void displayTimetable();*/
     void modifyStudents();
-    //void displayAllergyInfo();
-    //void displayParentInfo();
+
 };
 
 #endif

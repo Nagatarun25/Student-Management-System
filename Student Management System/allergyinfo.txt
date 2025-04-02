@@ -12,4 +12,5 @@
 1011,None
 1012,Strawberries
 1012,Tree Nuts
+1012,peanut
 1013,peanut

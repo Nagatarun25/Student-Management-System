@@ -8,6 +8,15 @@ admin::admin() {
     password = "password123";
 }
 
+void displayMainMenu() {// display menu (after admin login)
+    cout << "\n=== Student Management System ===\n";
+    cout << "1. Student Info\n";
+    cout << "2. Courses\n";
+    cout << "3. Exam Schedule\n";
+    cout << "4. Exit\n";
+    cout << "Enter your choice: ";
+}
+
 bool admin::login()
 {
     string inputUsername, inputPassword;

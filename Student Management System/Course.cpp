@@ -184,7 +184,7 @@ bool Course::isCourseAllowedForStudent(const string& studentID, const string& co
     studentFile.close();
 
     if (studentGrade == -1) {
-        cerr << "Error: Student not found\n";
+        cout << "Error: Student not found\n";
         return false;
     }
 
